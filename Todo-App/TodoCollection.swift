@@ -17,7 +17,7 @@ class TodoCollection: NSObject {
         self.save()
     }
     
-    func save (){
+    func save() {
         var todoList: Array<Dictionary<String, AnyObject>> = []
         for todo in todos {
             let todoDic = TodoCollection.convertDictionary(todo)
@@ -37,10 +37,7 @@ class TodoCollection: NSObject {
     }
     
     class func convertTodoModel(attiributes: Dictionary<String, AnyObject>) -> Todo {
-        let todo = Todo()
-        todo.title = attiributes["title"] as! String
-        todo.descript = attiributes["descript"] as! String
-        todo.priority = TodoPriority(rawValue: attiributes["priority"] as! Int)!
+        let todo = Todo(title: attiributes["title"] as! String, descript: attiributes["descript"] as! String, priority: TodoPriority(rawValue: attiributes["priority"] as! Int)!)
         return todo
     }
     

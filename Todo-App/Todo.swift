@@ -30,4 +30,10 @@ class Todo: NSObject {
     var title = ""
     var descript = ""
     var priority: TodoPriority = .Low
+    
+    init(title: String, descript: String, priority: TodoPriority) {
+        self.title = title
+        self.descript = descript
+        self.priority = priority
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XV8-6P-LnK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XV8-6P-LnK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -149,14 +149,14 @@
                     <navigationItem key="navigationItem" title="新規Todo作成" id="hmg-YK-xpI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="descriptionView" destination="Vp5-3c-wKd" id="vrz-Wf-1j3"/>
+                        <outlet property="descriptionTextView" destination="Vp5-3c-wKd" id="WH2-qb-Nto"/>
                         <outlet property="prioritySegment" destination="5l9-2G-rKp" id="VEL-5r-QjF"/>
-                        <outlet property="todoField" destination="P5H-a2-oZg" id="aGf-Y7-1t4"/>
+                        <outlet property="todoTextField" destination="P5H-a2-oZg" id="3gp-Av-Luu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOE-1C-2YF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2093.5" y="533.5"/>
+            <point key="canvasLocation" x="2084.5" y="534.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zlM-3V-FhE">
