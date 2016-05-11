@@ -18,9 +18,9 @@ class TodoCollection: NSObject {
     }
     
     func save() {
-        var todoList: Array<Dictionary<String, AnyObject>> = []
+        var todoList = [[String: AnyObject]]()
         for todo in todos {
-            let todoDic = todo.convertDictionary(todo)
+            let todoDic = todo.convertDictionary()
             todoList.append(todoDic)
         }
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -30,7 +30,7 @@ class TodoCollection: NSObject {
     
     func fetchTodos() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let todoList = defaults.objectForKey("todoLists") as? Array<Dictionary<String, AnyObject>> {
+        if let todoList = defaults.objectForKey("todoLists") as? [[String: AnyObject]] {
             for todoDic in todoList {
                 let todo = Todo.convertTodoModel(todoDic)
                 self.todos.append(todo)

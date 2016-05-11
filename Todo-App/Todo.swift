@@ -37,17 +37,20 @@ class Todo: NSObject {
         self.priority = priority
     }
     
-    func convertDictionary(todo: Todo) -> Dictionary<String, AnyObject> {
-        var dic = Dictionary<String, AnyObject>()
-        dic["title"] = todo.title
-        dic["descript"] = todo.descript
-        dic["priority"] = todo.priority.rawValue
+    func convertDictionary() -> [String: AnyObject] {
+        var dic = [String: AnyObject]()
+        dic["title"] = title
+        dic["descript"] = descript
+        dic["priority"] = priority.rawValue
         return dic
     }
     
     
-    class func convertTodoModel(attiributes: Dictionary<String, AnyObject>) -> Todo {
-        let todo = Todo(title: attiributes["title"] as! String, descript: attiributes["descript"] as! String, priority: TodoPriority(rawValue: attiributes["priority"] as! Int)!)
+    class func convertTodoModel(attiributes: [String: AnyObject]) -> Todo {
+        let title = attiributes["title"] as! String
+        let descript = attiributes["descript"] as! String
+        let priority = TodoPriority(rawValue: attiributes["priority"] as! Int)!
+        let todo = Todo(title: title, descript: descript, priority: priority)
         return todo
     }
 }
