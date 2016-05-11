@@ -17,10 +17,10 @@ class TodoCollection: NSObject {
         self.save()
     }
     
-    func save (){
-        var todoList: Array<Dictionary<String, AnyObject>> = []
+    func save() {
+        var todoList = [[String: AnyObject]]()
         for todo in todos {
-            let todoDic = TodoCollection.convertDictionary(todo)
+            let todoDic = todo.convertDictionary()
             todoList.append(todoDic)
         }
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -28,27 +28,11 @@ class TodoCollection: NSObject {
         defaults.synchronize()
     }
     
-    class func convertDictionary(todo: Todo) -> Dictionary<String, AnyObject> {
-        var dic = Dictionary<String, AnyObject>()
-        dic["title"] = todo.title
-        dic["descript"] = todo.descript
-        dic["priority"] = todo.priority.rawValue
-        return dic
-    }
-    
-    class func convertTodoModel(attiributes: Dictionary<String, AnyObject>) -> Todo {
-        let todo = Todo()
-        todo.title = attiributes["title"] as! String
-        todo.descript = attiributes["descript"] as! String
-        todo.priority = TodoPriority(rawValue: attiributes["priority"] as! Int)!
-        return todo
-    }
-    
     func fetchTodos() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let todoList = defaults.objectForKey("todoLists") as? Array<Dictionary<String, AnyObject>> {
+        if let todoList = defaults.objectForKey("todoLists") as? [[String: AnyObject]] {
             for todoDic in todoList {
-                let todo = TodoCollection.convertTodoModel(todoDic)
+                let todo = Todo.convertTodoModel(todoDic)
                 self.todos.append(todo)
             }
         }
