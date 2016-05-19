@@ -14,6 +14,8 @@ class TodoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         todoCollection.fetchTodos()
+        
+        tableView.registerNib(UINib(nibName: "TodoCell", bundle: nil), forCellReuseIdentifier: "TodoCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,14 +43,14 @@ class TodoListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "reuseIdentifier")
+        let cell: TodoCell = tableView.dequeueReusableCellWithIdentifier("TodoCell", forIndexPath: indexPath) as! TodoCell
         let todo = self.todoCollection.todos[indexPath.row]
-        cell.textLabel!.text = todo.title
-        cell.detailTextLabel!.text = todo.descript
+        cell.titleLabel.text = todo.title
+        cell.subTitleLabel.text = todo.descript
         cell.textLabel!.font = UIFont(name: "HirakakuProN-W3", size: 15)
         let priorityIcon = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
         priorityIcon.layer.cornerRadius = 6
-        priorityIcon.backgroundColor = UIColor.redColor()
+        priorityIcon.backgroundColor = todo.priority.color()
         cell.accessoryView = priorityIcon
         
         return cell
